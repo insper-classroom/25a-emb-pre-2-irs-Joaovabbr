@@ -38,10 +38,13 @@ int main() {
 
     if(BTN_FLAG_R){
       printf("fall red\n");
+      sleep_ms(150);
       BTN_FLAG_R = 0;
-    }else if(BTN_FLAG_G){
+    }
+    if(BTN_FLAG_G){
       printf("fall green\n");
-      BTN_FLAG_R = 0;
+      sleep_ms(150);
+      BTN_FLAG_G = 0;
     }
   }
 }
