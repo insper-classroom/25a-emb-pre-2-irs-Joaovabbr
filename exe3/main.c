@@ -39,8 +39,7 @@ int main() {
     if(BTN_FLAG_R){
       printf("fall red\n");
       BTN_FLAG_R = 0;
-    }
-    if (BTN_FLAG_G){
+    }else if(BTN_FLAG_G){
       printf("fall green\n");
       BTN_FLAG_R = 0;
     }
