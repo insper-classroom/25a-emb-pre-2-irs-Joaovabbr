@@ -1,10 +1,10 @@
 #include "hardware/gpio.h"
 #include "pico/stdlib.h"
 #include <stdio.h>
-const int BTN_PIN_R;
-const int BTN_PIN_G;
-const int LED_PIN_R;
-const int LED_PIN_G;
+const int BTN_PIN_R=28;
+const int BTN_PIN_G=26;
+const int LED_PIN_R=4;
+const int LED_PIN_G=6;
 volatile int BTN_FLAG_R;
 volatile int BTN_FLAG_G;
 
@@ -30,6 +30,9 @@ int main() {
   gpio_init(LED_PIN_R);
   gpio_set_dir(LED_PIN_G, GPIO_OUT);
   gpio_set_dir(LED_PIN_R, GPIO_OUT);
+
+  gpio_set_irq_enabled_with_callback(BTN_PIN_R, GPIO_IRQ_EDGE_FALL,true,&btn_callback);
+  gpio_set_irq_enabled(BTN_PIN_G, GPIO_IRQ_EDGE_FALL, true);
 
   while (true) {
     if (BTN_FLAG_R){
